@@ -19,16 +19,16 @@ before_install:
 
 before_script:
 - npm install -g @angular/cli
-- npm install -g karma
-- npm install -g codecov
-- npm install -g sw-precache
+#- npm install -g karma
+#- npm install -g codecov
+#- npm install -g sw-precache
 - npm install
 - ng build
 
 after_success:
-- npm run prep
-- npm run precache
-- codecov
+#- npm run prep
+#- npm run precache
+#- codecov
 
 script:
 # - ng test
