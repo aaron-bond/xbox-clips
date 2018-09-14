@@ -28,6 +28,13 @@
             "scripts": []
           },
           "configurations": {
+            "ci": {
+              "optimization": false,
+              "sourceMap": false,
+              "extractCss": false,
+              "namedChunks": true,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
