@@ -74,6 +74,8 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "watch": false,
+            "progress": false,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
