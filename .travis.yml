@@ -23,7 +23,7 @@ before_script:
 #- npm install -g codecov
 #- npm install -g sw-precache
 - npm install
-- ng b -c=ci
+- ng b -c=production
 
 after_success:
 #- npm run prep
@@ -31,7 +31,7 @@ after_success:
 #- codecov
 
 script:
-#- ng test
+- ng test -c=ci
 
 deploy:
   provider: pages

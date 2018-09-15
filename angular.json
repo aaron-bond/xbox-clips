@@ -13,11 +13,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": false,
+            "buildOptimizer": false,
+            "namedChunks": true,
+            "extractCss": false,
+            "sourceMap": true,
             "outputPath": "dist/xbox-clips",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "src/tsconfig.app.json",            
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -28,14 +33,8 @@
             "scripts": []
           },
           "configurations": {
-            "ci": {
-              "optimization": false,
-              "sourceMap": false,
-              "extractCss": false,
-              "namedChunks": true,
-              "buildOptimizer": false
-            },
             "production": {
+              "baseHref": "xbox-clips",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -74,8 +73,8 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "watch": false,
-            "progress": false,
+            "watch": true,
+            "progress": true,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
@@ -88,6 +87,13 @@
               "src/favicon.ico",
               "src/assets"
             ]
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "sourceMap": false
+            }
           }
         },
         "lint": {
