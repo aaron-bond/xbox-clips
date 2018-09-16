@@ -1,5 +1,5 @@
-/* import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ShellComponent } from './shell.component';
 
 describe('ShellComponent', () => {
@@ -8,7 +8,8 @@ describe('ShellComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ShellComponent]
+			declarations: [ShellComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
 
@@ -21,4 +22,4 @@ describe('ShellComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
-}); */
+});
