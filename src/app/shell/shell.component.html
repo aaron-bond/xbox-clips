@@ -1,0 +1,32 @@
+<div>
+	<mat-toolbar color="primary">
+		<div class="logo">
+			<button mat-button>
+				<mat-icon [inline]="true" aria-label="Button to open the home page with gamepad icon">videogame_asset</mat-icon>
+				<span class="logo-text">Xbox Clips</span>
+			</button>
+		</div>
+
+		<!-- This fills the remaining space of the current row -->
+		<span class="fill"></span>
+
+		<div class="search"  *ngIf="!showFullScreenSearch">
+			<mat-form-field #search color="accent">
+				<mat-label></mat-label>
+				<input matInput #search [(ngModel)]="gamertag" placeholder="Gamertag" (keydown.enter)="findXUID()">
+			</mat-form-field>
+
+			<button mat-icon-button (click)="(!gamertag && search.focus()) || findXUID()">
+				<mat-icon [inline]="true" aria-label="Button to search for a gamertag with a magnifying glass icon">search</mat-icon>
+			</button>
+		</div>
+	</mat-toolbar>
+</div>
+
+<div class="search-overlay" [class.full-screen]="showFullScreenSearch">
+	<mat-form-field appearance="outline" color="accent" *ngIf="showFullScreenSearch">
+		<mat-label>Search for a gamertag</mat-label>
+		<input matInput placeholder="Gamertag">
+		<mat-icon matSuffix (click)="showFullScreenSearch = false">search</mat-icon>
+	</mat-form-field>
+</div>
