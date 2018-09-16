@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +11,7 @@ describe('ShellComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-      imports:[FormsModule],
+      imports:[FormsModule, HttpClientModule],
       providers: [XboxAPI],
 			declarations: [ShellComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
