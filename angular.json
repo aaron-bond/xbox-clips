@@ -34,7 +34,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "xbox-clips",
+              "baseHref": "/xbox-clips/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
