@@ -1,5 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { XboxAPI } from '@app/api/xbox.api';
 import { ShellComponent } from './shell.component';
 
 describe('ShellComponent', () => {
@@ -8,6 +11,8 @@ describe('ShellComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
+      imports:[FormsModule, HttpClientModule],
+      providers: [XboxAPI],
 			declarations: [ShellComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
