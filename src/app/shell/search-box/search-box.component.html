@@ -1,0 +1,16 @@
+<!-- Only show the search if a gamertag hasn't been found -->
+<ng-container *ngIf="state !== LoadingState.Complete">
+	<mat-form-field appearance="outline" color="accent">
+		<mat-label>Search for a gamertag</mat-label>
+		<input matInput placeholder="Gamertag" name="gamertag" [(ngModel)]="gamertag" (keydown.enter)="lookupGamertag()" autocomplete="off" required>
+
+		<!-- Magnifying glass - click to search -->
+		<mat-icon matSuffix (click)="lookupGamertag()" *ngIf="state === LoadingState.Ready">search</mat-icon>
+
+		<!-- Loading symbol -->
+		<span matSuffix *ngIf="state === LoadingState.Busy" class="loading"></span>
+
+		<!-- Error state -->
+		<mat-error>Invalid Gamertag</mat-error>
+	</mat-form-field>
+</ng-container>

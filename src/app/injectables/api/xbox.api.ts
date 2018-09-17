@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class XboxAPI {
 	private url = 'https://xboxapi.com/v2/';
-	private authKey = '2222906f26fadff162d6491c02d5369e480ae777';
+	private authKey = '4f34fda373226f2c99943cf0adf82adf84fadcf0';
 
 	public constructor(private http: HttpClient) { }
 
@@ -13,7 +13,9 @@ export class XboxAPI {
 		return this.request(`xuid/${gamertag}`);
 	}
 
-	// this.request('2533274793074481/game-clips/saved');
+	public GetClips(xuid: string): Observable<GameClipInfo[]> {
+		return this.request(`${xuid}/alternative-game-clips`);
+	}
 
 	private request<T>(endpoint: string): Observable<T> {
 		let headers: HttpHeaders = new HttpHeaders({
