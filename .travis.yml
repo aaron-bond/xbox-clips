@@ -23,7 +23,7 @@ before_script:
 #- npm install -g codecov
 #- npm install -g sw-precache
 - npm install
-- ng b -c=production
+- ng b -c=github-pages
 
 after_success:
 #- npm run prep
