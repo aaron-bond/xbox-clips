@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "xbox-dvr": {
+        "xbox-clips": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/xbox-dvr",
+                        "outputPath": "dist/xbox-clips",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -80,18 +80,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "xbox-dvr:build"
+                        "browserTarget": "xbox-clips:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "xbox-dvr:build:production"
+                            "browserTarget": "xbox-clips:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "xbox-dvr:build"
+                        "browserTarget": "xbox-clips:build"
                     }
                 },
                 "test": {
@@ -128,16 +128,16 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "xbox-dvr:serve"
+                        "devServerTarget": "xbox-clips:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "xbox-dvr:serve:production"
+                            "devServerTarget": "xbox-clips:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "xbox-dvr"
+    "defaultProject": "xbox-clips"
 }
