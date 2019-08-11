@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShellComponent } from './shell.component';
 
+import { XboxAPI } from "../api/xbox.api";
+
 describe('ShellComponent', () => {
 	let component: ShellComponent;
 	let fixture: ComponentFixture<ShellComponent>;
