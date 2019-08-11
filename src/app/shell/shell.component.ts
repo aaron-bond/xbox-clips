@@ -28,8 +28,13 @@ export class ShellComponent implements OnInit {
     ngOnInit(): void {
         // When the address changes, we should decide whether to show the search
         this.router.events.subscribe((event: RouterEvent) => {
-            if (event.url && event.url !== "/") {
-                this.showFullScreenSearch = false;
+            if (event.url) {
+                if (event.url !== "/") {
+                    this.showFullScreenSearch = false;
+                }
+                else {
+                    this.showFullScreenSearch = true;
+                }
             }
         });
     }

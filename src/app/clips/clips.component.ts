@@ -11,7 +11,11 @@ export class ClipsComponent implements OnInit {
 
     public clips: GameClip[] = [];
 
-    public constructor(	private activatedRoute: ActivatedRoute, private xboxAPI: XboxAPI) { }
+    public shortUrl = "";
+    public showShareLink = false;
+
+    public constructor( private activatedRoute: ActivatedRoute, 
+                        private xboxAPI: XboxAPI) { }
 
     /**
 	 * Angular OnInit implementation
@@ -21,13 +25,33 @@ export class ClipsComponent implements OnInit {
 		this.activatedRoute.paramMap.subscribe(paramMap => {
 			let gamertag = paramMap.get('gamertag');
 
-            console.log("loading");
-            console.log("gamertag: " + gamertag);
-
 			if (gamertag) {
 				this.getGameClips(gamertag);
 			}
 		});
+    }
+
+    public getThumbnail(clip: GameClip): string {
+        let thumbnail = clip.thumbnails.find(image => image.thumbnailType == "Large");
+        return thumbnail.uri;
+    }
+
+    public getShortUrl(clip: GameClip): void {
+        this.showShareLink = true;
+
+        this.xboxAPI.getShortUrl(clip.gameClipUris[0].uri).subscribe(url => {
+            this.shortUrl = url;
+        });        
+    }
+
+    public copyToClipboard(input: HTMLInputElement, event: MouseEvent): void {
+        console.log(input);
+        
+        event.stopPropagation();
+
+        input.select();
+        document.execCommand('copy');
+        input.setSelectionRange(0, 0);
     }
     
     private getGameClips(gamertag: string): void {

@@ -12,6 +12,14 @@ export class XboxAPI {
 		return this.request(`clips/${gamertag}`);
 	}
 
+	public getShortUrl(longUrl: string): Observable<string> {
+		let body = {
+			"longUrl": longUrl
+		}
+
+		return this.http.post(this.url + "shorten", body, { responseType: "text" }) as Observable<string>;
+	}
+
 	private request<T>(endpoint: string): Observable<T> {
 		return this.http.get(this.url + endpoint) as Observable<T>;
 	}

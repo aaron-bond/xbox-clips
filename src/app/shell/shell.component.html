@@ -10,7 +10,7 @@
 	<span class="fill"></span>
 
 	<div class="search"  *ngIf="!showFullScreenSearch">
-		<mat-form-field #search color="accent">
+		<mat-form-field color="accent">
 			<mat-label></mat-label>
 			<input matInput #search [(ngModel)]="gamertag" placeholder="Gamertag" (keydown.enter)="navigateToGamertag()">
 		</mat-form-field>
