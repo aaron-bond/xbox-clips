@@ -38,5 +38,4 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dist/xbox-clips
-  on:
-    branch: gh-pages
+target_branch: gh-pages
