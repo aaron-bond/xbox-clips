@@ -1,13 +1,36 @@
-import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from "@angular/core";
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { MaterialModule } from './material.module';
+import { XboxAPI } from './api/xbox.api';
+import { ShellComponent } from './shell/shell.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ClipsComponent } from './clips/clips.component';
+
+const routes: Routes = [
+	{ path: ':gamertag', redirectTo: 'clips/:gamertag', pathMatch: 'full' },
+	{ path: 'clips/:gamertag', component: ClipsComponent }
+];
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule],
-    providers: [],
-    bootstrap: [AppComponent]
+    declarations: [
+        ShellComponent,
+        ClipsComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes),
+
+        // Angular Material
+		MaterialModule
+    ],
+    providers: [XboxAPI],
+    bootstrap: [ShellComponent]
 })
 export class AppModule {}

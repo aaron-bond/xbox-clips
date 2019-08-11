@@ -1,0 +1,44 @@
+<mat-toolbar class="xbox-header" color="primary">
+	<div class="logo">
+		<button mat-button>
+			<mat-icon [inline]="true" aria-label="Button to open the home page with gamepad icon">videogame_asset</mat-icon>
+			<span class="logo-text">Xbox Clips</span>
+		</button>
+	</div>
+
+	<!-- This fills the remaining space of the current row -->
+	<span class="fill"></span>
+
+	<div class="search"  *ngIf="!showFullScreenSearch">
+		<mat-form-field #search color="accent">
+			<mat-label></mat-label>
+			<input matInput #search [(ngModel)]="gamertag" placeholder="Gamertag" (keydown.enter)="navigateToGamertag()">
+		</mat-form-field>
+
+		<button mat-icon-button (click)="(!gamertag && search.focus()) || navigateToGamertag()">
+			<mat-icon [inline]="true" aria-label="Button to search for a gamertag with a magnifying glass icon">search</mat-icon>
+		</button>
+	</div>
+</mat-toolbar>
+
+<!-- Filling the screen when first loaded to show the search -->
+<div class="search-overlay" [class.full-screen]="showFullScreenSearch">
+	<ng-container *ngIf="showFullScreenSearch && state !== LoadingState.Complete">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>Search for a gamertag</mat-label>
+			<input matInput placeholder="Gamertag" name="gamertag" [(ngModel)]="gamertag" (keydown.enter)="navigateToGamertag()" autocomplete="off" required>
+	
+			<!-- Magnifying glass - click to search -->
+			<mat-icon matSuffix (click)="navigateToGamertag()" *ngIf="state === LoadingState.Ready">search</mat-icon>
+	
+			<!-- Loading symbol -->
+			<span matSuffix *ngIf="state === LoadingState.Busy" class="loading"></span>
+	
+			<!-- Error state -->
+			<mat-error>Invalid Gamertag</mat-error>
+		</mat-form-field>
+	</ng-container>
+</div>
+
+<!-- content from routes goes here -->
+<router-outlet></router-outlet>
