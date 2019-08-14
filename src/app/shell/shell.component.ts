@@ -10,6 +10,7 @@ import { LoadingState } from '../api/enums';
 })
 export class ShellComponent implements OnInit {
     public gamertag = "";
+    public searchTerm = "";
     public showFullScreenSearch = true;
     public LoadingState = LoadingState;
     public state: LoadingState = LoadingState.Ready;

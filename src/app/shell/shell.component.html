@@ -12,10 +12,11 @@
 	<div class="search"  *ngIf="!showFullScreenSearch">
 		<mat-form-field color="accent">
 			<mat-label></mat-label>
-			<input matInput #search [(ngModel)]="gamertag" placeholder="Gamertag" (keydown.enter)="navigateToGamertag()">
+			<input matInput #search [(ngModel)]="searchTerm" placeholder="Gamertag" (keydown.enter)="navigateToGamertag()">
 		</mat-form-field>
 
-		<button mat-icon-button (click)="(!gamertag && search.focus()) || navigateToGamertag()">
+		<!-- <button mat-icon-button (click)="(!searchTerm && search.focus()) || ((gamertag = searchTerm) && navigateToGamertag())"> -->
+		<button mat-icon-button>
 			<mat-icon [inline]="true" aria-label="Button to search for a gamertag with a magnifying glass icon">search</mat-icon>
 		</button>
 	</div>
