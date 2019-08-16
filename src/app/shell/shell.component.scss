@@ -44,6 +44,9 @@ mat-toolbar.xbox-header {
 }
 
 .search-overlay {
+	display: flex;
+	flex-direction: column;
+
 	flex-grow: 0;
 	width: 100%;
 	transition: 1s all;

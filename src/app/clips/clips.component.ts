@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { XboxAPI } from '../api/xbox.api';
+import { StorageService } from '../api/storage.service';
 
 @Component({
     selector: "x-clips",
@@ -15,7 +16,8 @@ export class ClipsComponent implements OnInit {
     public showShareLink = false;
 
     public constructor( private activatedRoute: ActivatedRoute, 
-                        private xboxAPI: XboxAPI) { }
+                        private xboxAPI: XboxAPI,
+                        private storageService: StorageService) { }
 
     /**
 	 * Angular OnInit implementation
@@ -57,6 +59,10 @@ export class ClipsComponent implements OnInit {
     private getGameClips(gamertag: string): void {
         this.xboxAPI.getClips(gamertag).subscribe(clipResponse => { 
             this.clips = clipResponse.gameClips;
+
+            if (this.clips.length > 0) {
+                this.storageService.recordSearch(gamertag);
+            }
         });
 	}
 }

@@ -9,6 +9,7 @@ import { XboxAPI } from './api/xbox.api';
 import { ClipsComponent } from './clips/clips.component';
 import { MaterialModule } from './material.module';
 import { ShellComponent } from './shell/shell.component';
+import { StorageService } from './api/storage.service';
 
 const routes: Routes = [
 	{ path: ':gamertag', redirectTo: 'clips/:gamertag', pathMatch: 'full' },
@@ -30,7 +31,7 @@ const routes: Routes = [
         // Angular Material
 		MaterialModule
     ],
-    providers: [XboxAPI],
+    providers: [XboxAPI, StorageService],
     bootstrap: [ShellComponent]
 })
 export class AppModule {}

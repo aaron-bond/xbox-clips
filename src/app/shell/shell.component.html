@@ -1,6 +1,6 @@
 <mat-toolbar class="xbox-header" color="primary">
 	<div class="logo">
-		<button mat-button>
+		<button mat-button (click)="navigateToHome()">
 			<mat-icon [inline]="true" aria-label="Button to open the home page with gamepad icon">videogame_asset</mat-icon>
 			<span class="logo-text">Xbox Clips</span>
 		</button>
@@ -38,6 +38,8 @@
 			<!-- Error state -->
 			<mat-error>Invalid Gamertag</mat-error>
 		</mat-form-field>
+
+		<button mat-button *ngFor="let search of searches" (click)="navigateToGamertag(search)">{{ search }}</button>
 	</ng-container>
 </div>
 

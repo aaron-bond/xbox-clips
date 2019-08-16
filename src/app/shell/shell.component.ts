@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, RouterEvent } from "@angular/router";
 import { XboxAPI } from "../api/xbox.api";
 import { LoadingState } from '../api/enums';
+import { StorageService } from '../api/storage.service';
 
 @Component({
     selector: "x-shell",
@@ -15,12 +16,18 @@ export class ShellComponent implements OnInit {
     public LoadingState = LoadingState;
     public state: LoadingState = LoadingState.Ready;
 
+    public get searches(): string[] {
+        return this.storageService.searches;
+    }
+
     /**
      * Creates a new instance of the shell component
      * @param xboxAPI
      * @param router
      */
-    public constructor(private xboxAPI: XboxAPI, private router: Router) {}
+    public constructor( private xboxAPI: XboxAPI, 
+                        private router: Router,
+                        private storageService: StorageService) {}
 
     /**
      * Angular OnInit implementation
@@ -40,12 +47,23 @@ export class ShellComponent implements OnInit {
         });
     }
 
-    public navigateToGamertag(): void {
+    public navigateToGamertag(gamertag = null): void {
+
+        let search = gamertag ? gamertag : this.gamertag;
 
         // When we're redirecting we can hide the full screen overlay
         this.showFullScreenSearch = false;
 
         // Redirect to the given gamertag's profile page
-        this.router.navigate([`clips/${this.gamertag}`]);
+        this.router.navigate([`clips/${search}`]);
+    }
+
+    public navigateToHome(): void {
+        
+        // When we redirecting back to home, we should display the screen overlay
+        this.showFullScreenSearch = true;
+
+        // Redirect back to the root
+        this.router.navigate([""]);
     }
 }
