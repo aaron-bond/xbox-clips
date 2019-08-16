@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ShellComponent } from './shell.component';
 
 import { XboxAPI } from "../api/xbox.api";
+import { StorageService } from '../api/storage.service';
 
 describe('ShellComponent', () => {
 	let component: ShellComponent;
@@ -15,7 +16,7 @@ describe('ShellComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [FormsModule, HttpClientModule, RouterTestingModule],
-			providers: [XboxAPI],
+			providers: [XboxAPI, StorageService],
 			declarations: [ShellComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
