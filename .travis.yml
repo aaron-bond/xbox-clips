@@ -34,7 +34,8 @@ script:
 - ng test -c=ci
 
 before_deploy:
-- cp dist/index.html 404.html
+- ls -d */
+# - cp dist/index.html 404.html
 
 deploy:
   provider: pages
