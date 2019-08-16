@@ -35,9 +35,7 @@ script:
 
 before_deploy:
 - cd dist/xbox-clips
-- ls
 - cp index.html 404.html
-- ls
 
 deploy:
   provider: pages
