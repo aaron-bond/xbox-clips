@@ -73,10 +73,7 @@
                             "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "assets": [
-                              { "glob": "index.html", "input": "dist/index.html", "output": "404.html" }
-                            ]
+                            "buildOptimizer": true
                         }
                     }
                 },
