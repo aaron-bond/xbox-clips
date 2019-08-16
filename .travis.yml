@@ -34,9 +34,10 @@ script:
 - ng test -c=ci
 
 before_deploy:
-- cd dist
+- cd dist/xbox-clips
 - ls
-# - cp dist/index.html 404.html
+- cp index.html 404.html
+- ls
 
 deploy:
   provider: pages
