@@ -10,6 +10,8 @@ import { ClipsComponent } from './clips/clips.component';
 import { MaterialModule } from './material.module';
 import { ShellComponent } from './shell/shell.component';
 import { StorageService } from './api/storage.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
 	{ path: ':gamertag', redirectTo: 'clips/:gamertag', pathMatch: 'full' },
@@ -29,7 +31,9 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
 
         // Angular Material
-		MaterialModule
+		MaterialModule,
+
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [XboxAPI, StorageService],
     bootstrap: [ShellComponent]
