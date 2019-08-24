@@ -2,24 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Xbox Clips</title>
-  <base href="/" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146409315-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        gtag('config', 'UA-146409315-1');
+    </script>
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
+    <meta charset="utf-8" />
+    <title>Xbox Clips</title>
+
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
 </head>
 
 <body>
-  <img src="https://xbox-clips.herokuapp.com/images/static.png" style="width: 0" />
-  <x-shell></x-shell>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <!-- image used to kick up the heroku app before user makes a request -->
+    <img src="https://xbox-clips.herokuapp.com/images/static.png" style="width: 0" />
+
+    <x-shell></x-shell>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
 </html>
