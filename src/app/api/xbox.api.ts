@@ -8,6 +8,10 @@ export class XboxAPI {
 
 	public constructor(private http: HttpClient) { }
 
+	public healthCheck(): Observable<void> {
+		return this.request(``);
+	}
+
 	public getClips(gamertag: string): Observable<XboxClipsResponse> {
 		return this.request(`clips/${gamertag}`);
 	}
