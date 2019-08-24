@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { XboxAPI } from '../api/xbox.api';
 import { StorageService } from '../api/storage.service';
 
@@ -15,9 +15,12 @@ export class ClipsComponent implements OnInit {
     public shortUrl = "";
     public showShareLink = false;
 
+    private gamertag: string = "";
+
     public constructor( private activatedRoute: ActivatedRoute, 
                         private xboxAPI: XboxAPI,
-                        private storageService: StorageService) { }
+                        private storageService: StorageService,
+                        private router: Router) { }
 
     /**
 	 * Angular OnInit implementation
@@ -25,10 +28,10 @@ export class ClipsComponent implements OnInit {
 	 */
 	ngOnInit(): void {
 		this.activatedRoute.paramMap.subscribe(paramMap => {
-			let gamertag = paramMap.get('gamertag');
+			this.gamertag = paramMap.get('gamertag');
 
-			if (gamertag) {
-				this.getGameClips(gamertag);
+			if (this.gamertag) {
+				this.getGameClips(this.gamertag);
 			}
 		});
     }
@@ -46,14 +49,16 @@ export class ClipsComponent implements OnInit {
         });        
     }
 
-    public copyToClipboard(input: HTMLInputElement, event: MouseEvent): void {
-        console.log(input);
-        
+    public copyToClipboard(input: HTMLInputElement, event: MouseEvent): void {       
         event.stopPropagation();
 
         input.select();
         document.execCommand('copy');
         input.setSelectionRange(0, 0);
+    }
+
+    public navigateToScreenshots(): void {
+        this.router.navigate(['screenshots', this.gamertag]);
     }
     
     private getGameClips(gamertag: string): void {

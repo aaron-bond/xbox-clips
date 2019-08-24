@@ -16,6 +16,10 @@ export class XboxAPI {
 		return this.request(`clips/${gamertag}`);
 	}
 
+	public getScreenshots(gamertag: string): Observable<XboxScreenshotResponse> {
+		return this.request(`screenshots/${gamertag}`);
+	}
+
 	public getShortUrl(longUrl: string): Observable<string> {
 		let body = {
 			"longUrl": longUrl

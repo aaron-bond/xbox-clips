@@ -1,0 +1,22 @@
+<div class="button-container">
+        <button mat-raised-button (click)="navigateToClips()">Clips</button>
+    </div>
+
+<ng-container *ngFor="let shot of screenshots">
+    <mat-card>
+
+        <a href="{{ shot.screenshotUris[0].uri }}">
+            <img mat-card-image [src]="getThumbnail(shot)" alt="Screenshot from {{ shot.titleName }}">
+        </a>
+
+        <mat-card-content>
+            <mat-card-subtitle>{{ shot.titleName }}</mat-card-subtitle>
+
+            <span class="fill"></span>
+
+            <a href="{{ shot.screenshotUris[0].uri }}" download="screenshot.png">
+                <i class="fas fa-download"></i>
+            </a>
+        </mat-card-content>
+    </mat-card>
+</ng-container>

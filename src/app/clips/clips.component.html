@@ -1,11 +1,15 @@
+<div class="button-container">
+    <button mat-raised-button (click)="navigateToScreenshots()">Screenshots</button>
+</div>
+
 <ng-container *ngFor="let clip of clips">
     <mat-card>
+
+        <img mat-card-image [src]="getThumbnail(clip)" alt="Game clip from {{ clip.titleName }}">
 
         <a href="{{clip.gameClipUris[0].uri}}">
             <i class="material-icons overlay">play_circle_outline</i>
         </a>
-
-        <img mat-card-image [src]="getThumbnail(clip)" alt="Game clip from {{ clip.titleName }}">
 
         <mat-card-content>
             <mat-card-subtitle>{{ clip.titleName }}</mat-card-subtitle>
@@ -23,7 +27,8 @@
 
     <mat-card>
         <mat-card-content>
-            <mat-progress-spinner mode="indeterminate" *ngIf="!shortUrl" diameter="50" strokeWidth="5"></mat-progress-spinner>
+            <mat-progress-spinner mode="indeterminate" *ngIf="!shortUrl" diameter="50" strokeWidth="5">
+            </mat-progress-spinner>
 
             <mat-form-field appearance="outline" *ngIf="shortUrl">
                 <mat-label>Short URL to your clip</mat-label>

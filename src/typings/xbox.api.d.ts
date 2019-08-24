@@ -3,8 +3,9 @@ interface XboxClipsResponse {
   pagingInfo: PagingInfo;
 }
 
-interface PagingInfo {
-  continuationToken: string;
+interface XboxScreenshotResponse {
+  screenshots: Screenshot[];
+  pagingInfo: PagingInfo;
 }
 
 interface GameClip {
@@ -27,7 +28,7 @@ interface GameClip {
   achievementId: string;
   greatestMomentId: string;
   thumbnails: Thumbnail[];
-  gameClipUris: GameClipUris[];
+  gameClipUris: ResourceUris[];
   xuid: string;
   clipName: string;
   titleName: string;
@@ -40,7 +41,37 @@ interface GameClip {
   partialViews: number;
 }
 
-interface GameClipUris {
+interface Screenshot {
+  screenshotId: string;
+  resolutionHeight: number;
+  resolutionWidth: number;
+  state: string;
+  datePublished: string;
+  dateTaken: string;
+  lastModified: string;
+  userCaption: string;
+  type: string;
+  scid: string;
+  titleId: number;
+  rating: number;
+  ratingCount: number;
+  views: number;
+  titleData: string;
+  systemProperties: string;
+  savedByUser: boolean;
+  achievementId: string;
+  greatestMomentId?: any;
+  thumbnails: Thumbnail[];
+  screenshotUris: ResourceUris[];
+  xuid: string;
+  screenshotName: string;
+  titleName: string;
+  screenshotLocale: string;
+  screenshotContentAttributes: string;
+  deviceType: string;
+}
+
+interface ResourceUris {
   uri: string;
   fileSize: number;
   uriType: string;
@@ -51,4 +82,8 @@ interface Thumbnail {
   uri: string;
   fileSize: number;
   thumbnailType: string;
+}
+
+interface PagingInfo {
+  continuationToken: string;
 }
