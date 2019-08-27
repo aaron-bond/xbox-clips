@@ -42,6 +42,7 @@ export class ClipsComponent implements OnInit {
     }
 
     public getShortUrl(clip: GameClip): void {
+        this.shortUrl = "";
         this.showShareLink = true;
 
         this.xboxAPI.getShortUrl(clip.gameClipUris[0].uri).subscribe(url => {
