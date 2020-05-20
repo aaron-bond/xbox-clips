@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterEvent } from "@angular/router";
 import { XboxAPI } from "../api/xbox.api";
-import { LoadingState } from '../api/enums';
-import { StorageService } from '../api/storage.service';
+import { LoadingState } from "../api/enums";
+import { StorageService } from "../api/storage.service";
 
 @Component({
     selector: "x-shell",
     templateUrl: "./shell.component.html",
-    styleUrls: ["./shell.component.scss"]
+    styleUrls: ["./shell.component.scss"],
 })
 export class ShellComponent implements OnInit {
     public gamertag = "";
@@ -25,9 +25,11 @@ export class ShellComponent implements OnInit {
      * @param xboxAPI
      * @param router
      */
-    public constructor( private xboxAPI: XboxAPI, 
-                        private router: Router,
-                        private storageService: StorageService) {}
+    public constructor(
+        private xboxAPI: XboxAPI,
+        private router: Router,
+        private storageService: StorageService
+    ) {}
 
     /**
      * Angular OnInit implementation
@@ -39,8 +41,7 @@ export class ShellComponent implements OnInit {
             if (event.url) {
                 if (event.url !== "/") {
                     this.showFullScreenSearch = false;
-                }
-                else {
+                } else {
                     this.showFullScreenSearch = true;
                 }
             }
@@ -48,7 +49,6 @@ export class ShellComponent implements OnInit {
     }
 
     public navigateToGamertag(gamertag = null): void {
-
         let search = gamertag ? gamertag : this.gamertag;
 
         // When we're redirecting we can hide the full screen overlay
@@ -59,11 +59,14 @@ export class ShellComponent implements OnInit {
     }
 
     public navigateToHome(): void {
-        
         // When we redirecting back to home, we should display the screen overlay
         this.showFullScreenSearch = true;
 
         // Redirect back to the root
         this.router.navigate([""]);
+    }
+
+    public clearSearches(): void {
+        this.storageService.clearSearches();
     }
 }

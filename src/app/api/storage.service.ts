@@ -1,13 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class StorageService {
-
     public searches: string[] = [];
 
-	public constructor() {
+    public constructor() {
         this.getPreviousSearches();
     }
 
@@ -16,10 +15,19 @@ export class StorageService {
             this.searches.push(search);
         }
 
+        this.saveSearches();
+    }
+
+    public clearSearches(): void {
+        this.searches.length = 0;
+        localStorage.clear();
+    }
+
+    private saveSearches(): void {
         localStorage.setItem("x-clips-searches", JSON.stringify(this.searches));
     }
 
-	private getPreviousSearches(): void {
+    private getPreviousSearches(): void {
         let searches = JSON.parse(localStorage.getItem("x-clips-searches"));
 
         if (searches) {

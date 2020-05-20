@@ -9,14 +9,16 @@
 	<!-- This fills the remaining space of the current row -->
 	<span class="fill"></span>
 
-	<div class="search"  *ngIf="!showFullScreenSearch">
+	<div class="search" *ngIf="!showFullScreenSearch">
 		<mat-form-field color="accent">
 			<mat-label></mat-label>
-			<input matInput #search [(ngModel)]="searchTerm" placeholder="Gamertag" (keydown.enter)="navigateToGamertag()">
+			<input matInput #search [(ngModel)]="searchTerm" placeholder="Gamertag"
+				(keydown.enter)="navigateToGamertag()">
 		</mat-form-field>
 
 		<button mat-icon-button>
-			<i class="fas fa-search" aria-label="Button to search for a gamertag with a magnifying glass icon" (click)="navigateToHome()"></i>
+			<i class="fas fa-search" aria-label="Button to search for a gamertag with a magnifying glass icon"
+				(click)="navigateToHome()"></i>
 		</button>
 	</div>
 </mat-toolbar>
@@ -26,19 +28,22 @@
 	<ng-container *ngIf="showFullScreenSearch && state !== LoadingState.Complete">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>Search for a gamertag</mat-label>
-			<input matInput placeholder="Gamertag" name="gamertag" [(ngModel)]="gamertag" (keydown.enter)="navigateToGamertag()" autocomplete="off" required>
-	
+			<input matInput placeholder="Gamertag" name="gamertag" [(ngModel)]="gamertag"
+				(keydown.enter)="navigateToGamertag()" autocomplete="off" required>
+
 			<!-- Magnifying glass - click to search -->
 			<mat-icon matSuffix (click)="navigateToGamertag()" *ngIf="state === LoadingState.Ready">search</mat-icon>
-	
+
 			<!-- Loading symbol -->
 			<span matSuffix *ngIf="state === LoadingState.Busy" class="loading"></span>
-	
+
 			<!-- Error state -->
 			<mat-error>Invalid Gamertag</mat-error>
 		</mat-form-field>
 
 		<button mat-button *ngFor="let search of searches" (click)="navigateToGamertag(search)">{{ search }}</button>
+
+		<mat-icon *ngIf="searches.length" style="margin-top: 1em;" (click)="clearSearches()">delete_outline</mat-icon>
 	</ng-container>
 </div>
 
